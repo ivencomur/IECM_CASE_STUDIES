@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meet App - Case Study (Print-Safe Visual Proof)</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        font-family: "Lato", sans-serif; font-weight: 400; line-height: 1.6;
+        color: #333; background: #d9e1e5;
+      }
+      .page {
+        width: 8.5in; min-height: 11in; margin: 0 auto 0.5in auto; padding: 0.5in 0.75in;
+        background: white; page-break-after: always; position: relative;
+      }
+      .page:last-child { page-break-after: avoid; }
+      .hero-container { text-align: center; margin-bottom: 2rem; }
+      .hero-image {
+        width: 100%; height: 300px; background: linear-gradient(135deg, #2c3e50 0%, #20504b 100%);
+        border-radius: 12px; display: flex; align-items: center; justify-content: center;
+        margin: 0 auto 1rem; border: 3px dashed #ccc; overflow: hidden;
+      }
+      .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .main-title { font-size: 3rem; font-weight: 700; color: #2d3748; margin-bottom: 0.5rem; letter-spacing: -1px; }
+      .subtitle { font-size: 1.3rem; color: #718096; margin-bottom: 2rem; font-weight: 300; }
+      .project-pitch {
+        font-size: 1rem; color: #4a5568; margin-bottom: 2rem; padding: 1.5rem;
+        background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+        border-radius: 12px; border-left: 5px solid #20504b; box-shadow: 0 4px 6px rgba(0,0,0,.05);
+        text-align: justify;
+      }
+      .project-details-grid {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem; margin: 2rem auto; padding: 0 1rem;
+      }
+      .detail-card {
+        background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,.1);
+        text-align: center; border-top: 4px solid #20504b;
+      }
+      .detail-card h3 { color: #20504b; font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; }
+      .detail-card .detail-title { display: block; font-weight: 700; font-size: 1rem; color: #2d3748; margin-bottom: .75rem; }
+      .detail-card p, .detail-card li { font-size: .9rem; color: #4a5568; list-style: none; padding: 0; }
+      h2 {
+        font-size: 2rem; font-weight: 700; color: #2d3748; margin: 2rem 0 1.5rem 0;
+        border-bottom: 3px solid #20504b; padding-bottom: .75rem;
+      }
+      h3 {
+        font-size: 1.4rem; font-weight: 600; color: #4a5568; margin: 2rem 0 1rem 0; position: relative; padding-left: 1rem;
+      }
+      h3::before {
+        content: ""; position: absolute; left: -1rem; top: 50%; transform: translateY(-50%);
+        width: 4px; height: 100%; background: #20504b; border-radius: 2px;
+      }
+      p { margin-bottom: 1.25rem; font-size: 1rem; color: #4a5568; text-align: justify; }
+      .challenge-section {
+        margin-bottom: 2rem; padding: 1.5rem; border-radius: 12px; background: #f8f9fa; border: 1px solid #e9ecef;
+        page-break-inside: avoid;
+      }
+      .visual-proof { margin: 1.5rem 0; padding: 1rem; background: white; border-radius: 8px; border: 2px solid #e2e8f0; }
+      .visual-proof h4 {
+        font-size: 1rem; color: #20504b; margin-bottom: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .5px;
+      }
+      .side-by-side-container {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0;
+      }
+      .code-comparison { width: 100%; }
+      .code-comparison h4 { text-align: center; color: #20504b; font-size: 1rem; margin-bottom: .75rem; font-weight: 600; }
+      .code-placeholder {
+        background: #1a202c; color: #e2e8f0; height: 280px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+        font-family: "Monaco","Menlo","Ubuntu Mono",monospace; border: 2px solid #4a5568; overflow: hidden; padding: .5rem; position: relative;
+      }
+      .code-placeholder img { width: 100%; height: 100%; object-fit: contain; border-radius: 4px; }
+      .image-placeholder {
+        width: 100%; min-height: 250px; background: white; border: 2px solid #e2e8f0; border-radius: 8px; display: flex; align-items: center; justify-content: center; padding: .5rem; overflow: hidden;
+      }
+      .image-placeholder img { width: 100%; height: 100%; object-fit: contain; border-radius: 8px; }
+      .ui-screenshots { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+      .final-solution {
+        background: linear-gradient(135deg, #20504b10, #2c3e5010); padding: 2rem; border-radius: 12px; border: 1px solid #20504b30; margin: 2rem 0;
+      }
+      .gif-placeholder {
+        width: 100%; height: 450px; background: white; border: 2px solid #20504b; border-radius: 12px; display: block; margin: 1rem 0; padding: 10px; overflow: hidden;
+      }
+      .gif-placeholder img { width: 100%; height: 100%; object-fit: contain; display: block; content: url('./MEETAPP_WORKING_ON_PHONE.gif'); }
+      .learnings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; page-break-inside: avoid; }
+      .learning-box { background: white; padding: 1.5rem; border-radius: 12px; border-left: 5px solid #20504b; box-shadow: 0 4px 6px rgba(0,0,0,.05); }
+      .learning-box h4 { font-size: 1.2rem; color: #2d3748; margin-bottom: 1rem; font-weight: 600; }
+      .future-steps-list { margin: 1rem auto; padding-left: 0; list-style: none; max-width: 80%; text-align: center; }
+      .future-steps-list li { padding: .5rem 0; color: #4a5568; }
+      .future-steps-list li::before { content: "→ "; color: #20504b; font-weight: bold; }
+      .cta-section {
+        text-align: center; margin-top: 3rem; padding: 2rem; background: linear-gradient(135deg, #20504b10, #2c3e5010); border-radius: 12px;
+      }
+      .cta-section h3 { margin-bottom: 1.5rem; text-align: center; padding-left: 0; }
+      .cta-section h4 { margin: 1.5rem 0 .5rem 0; color: #4a5568; font-size: 1.1rem; }
+      .cta-buttons { display: flex; gap: 1.5rem; justify-content: center; margin-top: 1.5rem; }
+      .cta-button {
+        padding: 1rem 2rem; border: none; border-radius: 8px; font-weight: 600; text-decoration: none; color: white; transition: all .3s ease; font-size: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,.1);
+      }
+      .cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,.15); }
+      .github-button { background: linear-gradient(135deg, #20504b, #2c3e50); }
+      .demo-button { background: linear-gradient(135deg, #4a5568, #2d3748); }
+
+      /* ===== PRINT RULES (FORCED TOGETHERNESS) ===== */
+      @media print {
+        body { background: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .page { width: 100%; min-height: 0; margin: 0; padding: 0.5in 0.6in; page-break-after: always; }
+        .page:last-child { page-break-after: avoid; }
+        .gif-placeholder img { content: url('./MEETAPP_WORKING_ON_PHONE.png') !important; }
+
+        /* Stack comparison columns for print */
+        .side-by-side-container { display: block !important; }
+
+        /* Keep each heading+image set together, one per page */
+        .code-comparison {
+          page-break-inside: avoid; break-inside: avoid-page;
+          -webkit-column-break-inside: avoid; -webkit-region-break-inside: avoid;
+          page-break-before: always; page-break-after: always;
+          margin: 0; padding: 0.15in 0 0;
+        }
+        .code-comparison:first-child { page-break-before: auto; }
+
+        .code-comparison h4 {
+          page-break-inside: avoid; break-inside: avoid-page;
+          margin: 0 0 0.15in 0; text-align: center; font-size: 1.2rem;
+        }
+
+        .code-placeholder {
+          width: 100% !important; height: 8in !important; max-height: 8.5in !important;
+          border: none !important; padding: 0 !important; margin: 0 !important;
+          display: flex !important; align-items: center !important; justify-content: center !important;
+          page-break-inside: avoid; break-inside: avoid-page;
+        }
+        .code-placeholder img {
+          width: 100% !important; height: 100% !important; object-fit: contain !important;
+          transform: none !important; position: static !important; max-width: 100% !important; max-height: 100% !important;
+        }
+
+        /* Also avoid splitting other content boxes */
+        .challenge-section, .visual-proof, .ui-screenshots, .image-placeholder,
+        .final-solution, .learnings-grid, .learning-box {
+          page-break-inside: avoid; break-inside: avoid-page;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="hero-container">
+        <div class="hero-image">
+          <img src="./SCREENSHOT_MEETAPP_HERO.png" alt="Screenshot welcome page to Meet App" />
+        </div>
+        <h1 class="main-title">Meet App</h1>
+        <p class="subtitle">A Case Study in Serverless Architecture and Test-Driven Development</p>
+        <div class="project-pitch">
+          <strong>Project Pitch:</strong><br /><br />
+          As part of my CareerFoundry training, I was tasked with building a serverless, progressive web application (PWA). The goal was to fetch and display real-world event data from a Google Calendar API, allowing users to find tech events in different cities. I developed the "Meet App" to not only meet these requirements but to rigorously apply Test-Driven Development (TDD) principles from the ground up. This project showcases my ability to integrate third-party APIs, implement a serverless backend, and build a reliable, offline-capable PWA.
+        </div>
+      </div>
+
+      <div class="project-details-grid">
+        <div class="detail-card">
+          <h3>My Role</h3>
+          <span class="detail-title">Sole Developer</span>
+          <p>Responsible for TDD, serverless functions, API integration, and PWA features.</p>
+        </div>
+        <div class="detail-card">
+          <h3>Duration</h3>
+          <span class="detail-title">~6 Weeks</span>
+           <p>(July 2025 – August 2025)</p>
+        </div>
+        <div class="detail-card">
+          <h3>Tech Stack</h3>
+          <ul style="padding: 0;">
+            <li>React</li>
+            <li>Progressive Web App (PWA)</li>
+            <li>Serverless (AWS Lambda)</li>
+            <li>Google Calendar API</li>
+            <li>OAuth2</li>
+            <li>Test-Driven Development (TDD)</li>
+            <li>Jest & React Testing Library</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="page">
+      <h2>The Process & Challenges</h2>
+      <p>
+        The core of this project was not just to build a functional app, but to build it using a specific, professional methodology (TDD) and a modern, secure architecture (serverless).
+      </p>
+
+      <div class="challenge-section">
+        <h3>Challenge 1: Architecture: Implementing a Secure, Serverless API</h3>
+        <p>
+          <strong>Problem:</strong> The app needed to access the Google Calendar API, which requires secure authentication (OAuth2) and must not expose sensitive credentials (like API keys) on the client-side.
+        </p>
+        <p>
+          <strong>Solution:</strong> I engineered a serverless backend using AWS Lambda functions. This approach allowed me to create a secure API endpoint that handles the OAuth2 authentication flow and data fetching on the server side, protecting my API keys. The React client only communicates with my secure Lambda function, not directly with the Google API, which is a best practice for security.
+        </p>
+        <div class="visual-proof">
+          <h4>Visual Proof: Serverless Function</h4>
+          <div class="code-placeholder">
+            <img src="./SCREENSHOT_MEETAPP_LAMBDA.png" alt="Screenshot of AWS Lambda function code" />
+          </div>
+        </div>
+      </div>
+
+      <div class="challenge-section">
+        <h3>Challenge 2: Development Methodology: Adhering to Strict TDD</h3>
+        <p>
+          <strong>Problem:</strong> The course required building the app using Test-Driven Development, which means writing tests <em>before</em> writing the application code. This was a new workflow.
+        </p>
+        <p>
+          <strong>Solution:</strong> I adopted a strict TDD workflow using Jest and React Testing Library. Every component (like <code>CitySearch</code>) and feature (like filtering events by city) was developed by first writing a failing test, then writing the code to pass it, and finally refactoring. This was a critical lesson in building resilient, predictable code and ensuring all features worked as expected from the start.
+        </p>
+        <div class="visual-proof">
+          <h4>Visual Proof: Test-Driven Development</h4>
+          <div class="side-by-side-container">
+            <div class="code-comparison">
+              <h4>Failing Test (Jest)</h4>
+              <div class="code-placeholder">
+                <img src="./SCREENSHOT_MEETAPP_JEST.png" alt="Screenshot of Jest test code for a component" />
+              </div>
+            </div>
+            <div class="code-comparison">
+              <h4>Component Code (React)</h4>
+              <div class="code-placeholder">
+                <img src="./SCREENSHOT_MEETAPP_COMPONENT.png" alt="Screenshot of the React component code that passes the test" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page">
+       <div class="challenge-section">
+        <h3>Challenge 3: Functionality: Offline Capability & Data Visualization</h3>
+        <p>
+          <strong>Problem:</strong> As a Progressive Web App (PWA), the app needed to be installable and functional even without an internet connection. It also needed to visualize the event data.
+        </p>
+        <p>
+          <strong>Solution:</strong> I implemented a service worker to cache the application shell (the HTML, CSS, and JS) and the event data fetched from the API. This allows users to launch the app while offline and still see the last-fetched event data. I also integrated Recharts to create scatter and pie charts, visualizing the number of events per city and by topic.
+        </p>
+        <div class="visual-proof">
+          <h4>Visual Proof: PWA & Data Visualization</h4>
+           <div class="image-placeholder">
+             <img src="./SCREENSHOT_MEETAPP_CHARTS.png" alt="Screenshot of the app running offline or the data visualization charts" />
+            </div>
+        </div>
+      </div>
+
+      <div class="final-solution">
+        <h2>The Final Solution</h2>
+        <p>
+          The result is a fully functional, installable PWA that provides real-world event data. It features data visualization, a robust city search that filters events, and full offline capabilities, all built on a secure, serverless architecture.
+        </p>
+        <div class="gif-placeholder">
+          <img src="./MEETAPP_WORKING_ON_PHONE.gif" alt="Meet App user flow demonstration" />
+        </div>
+      </div>
+
+      <h2>Key Learnings & Future Steps</h2>
+      <div class="learnings-grid">
+        <div class="learning-box">
+          <h4>Key Learnings</h4>
+          <p>
+            This project was a deep dive into the "test-first" mindset, which fundamentally changed how I approach component development. It also solidified my understanding of serverless architecture (AWS Lambda) as a powerful, secure, and scalable solution for modern web applications.
+          </p>
+        </div>
+        <div class="learning-box">
+          <h4>Future Steps</h4>
+          <p style="text-align: center; margin-bottom: 0.5rem;">
+            The next steps are to implement more user-centric features:
+          </p>
+          <ul class="future-steps-list">
+            <li>Allow users to save or "favorite" events</li>
+            <li>Implement push notifications for saved events</li>
+            <li>Improve data visualization with more chart types</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cta-section">
+        <h3>View the Project</h3>
+        <div class="cta-buttons">
+          <a href="https://github.com/ivencomur/meet/tree/ACHIEVEMENT-4-WITHREADME-FOR-PORTFOLIO" class="cta-button github-button" target="_blank" rel="noopener">View on GitHub</a>
+          <a href="https://ivans-events.vercel.app/" class="cta-button demo-button" target="_blank" rel="noopener">Live Demo</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
