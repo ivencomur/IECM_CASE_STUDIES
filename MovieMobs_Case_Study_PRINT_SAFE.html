@@ -4,216 +4,494 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MovieMobs - Case Study (Print-Safe Visual Proof)</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Moderustic:wght@400;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Moderustic:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
       body {
-        font-family: "Moderustic", sans-serif; font-weight: 400; line-height: 1.6;
-        color: #333; background: #d9e1e5;
+        font-family: "Moderustic", sans-serif;
+        font-weight: 400;
+        line-height: 1.6;
+        color: #333;
+        background: #d9e1e5;
       }
       .page {
-        width: 8.5in; min-height: 11in; margin: 20px auto 0.5in auto; padding: 0.5in 0.75in;
-        background: white; page-break-after: always; position: relative;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* Added shadow for better view */
+        width: 8.5in;
+        min-height: 11in;
+        margin: 20px auto 0.5in auto;
+        padding: 0.5in 0.75in;
+        background: white;
+        page-break-after: always;
+        position: relative;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Added shadow for better view */
       }
-      .page:last-child { page-break-after: avoid; }
-      
+      .page:last-child {
+        page-break-after: avoid;
+      }
+
       /* --- HEADER NAVIGATION --- */
-      .nav-header { text-align: center; padding-bottom: 20px; }
-      .nav-btn {
-        display: inline-block; padding: 12px 30px; background-color: #e0b354; 
-        color: #2b2b2b; text-decoration: none; border-radius: 6px; font-weight: 700;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+      .nav-header {
+        text-align: center;
+        padding-bottom: 20px;
       }
-      .nav-btn:hover { opacity: 0.8; }
+      .nav-btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: #e0b354;
+        color: #2b2b2b;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 700;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+      }
+      .nav-btn:hover {
+        opacity: 0.8;
+      }
       /* ------------------------- */
 
-      .hero-container { text-align: center; margin-bottom: 2rem; }
+      .hero-container {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
       .hero-image {
-        width: 100%; height: 300px; 
+        width: 100%;
+        height: 300px;
         background: #357b70; /* Brand Teal */
-        border-radius: 12px; display: flex; align-items: center; justify-content: center;
-        margin: 0 auto 1rem; border: 3px dashed #e0b354; /* Gold Accent */
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+        border: 3px dashed #e0b354; /* Gold Accent */
         overflow: hidden;
       }
-      .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
-      
-      .main-title { font-size: 3rem; font-weight: 700; color: #2d3748; margin-bottom: 0.5rem; letter-spacing: -1px; }
-      .subtitle { font-size: 1.3rem; color: #718096; margin-bottom: 2rem; font-weight: 300; }
-      
+      .hero-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .main-title {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #2d3748;
+        margin-bottom: 0.5rem;
+        letter-spacing: -1px;
+      }
+      .subtitle {
+        font-size: 1.3rem;
+        color: #718096;
+        margin-bottom: 2rem;
+        font-weight: 300;
+      }
+
       .project-pitch {
-        font-size: 1rem; color: #4a5568; margin-bottom: 2rem; padding: 1.5rem;
+        font-size: 1rem;
+        color: #4a5568;
+        margin-bottom: 2rem;
+        padding: 1.5rem;
         background: #f7fafc;
-        border-radius: 12px; 
+        border-radius: 12px;
         border-left: 5px solid #357b70; /* Brand Teal */
-        box-shadow: 0 4px 6px rgba(0,0,0,.05);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         text-align: justify;
       }
-      
+
       .project-details-grid {
-        display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1.5rem; margin: 2rem auto; padding: 0 1rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem auto;
+        padding: 0 1rem;
       }
-      
+
       .detail-card {
-        background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,.1);
-        text-align: center; 
+        background: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
         border-top: 4px solid #357b70; /* Brand Teal */
       }
-      .detail-card h3 { color: #357b70; font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; }
-      .detail-card .detail-title { display: block; font-weight: 700; font-size: 1rem; color: #2d3748; margin-bottom: .75rem; }
-      .detail-card p { font-size: .9rem; color: #4a5568; }
-      
-      h2 {
-        font-size: 2rem; font-weight: 700; color: #2d3748; margin: 2rem 0 1.5rem 0;
-        border-bottom: 3px solid #357b70; /* Brand Teal */
-        padding-bottom: .75rem;
+      .detail-card h3 {
+        color: #357b70;
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
       }
-      
+      .detail-card .detail-title {
+        display: block;
+        font-weight: 700;
+        font-size: 1rem;
+        color: #2d3748;
+        margin-bottom: 0.75rem;
+      }
+      .detail-card p {
+        font-size: 0.9rem;
+        color: #4a5568;
+      }
+
+      h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #2d3748;
+        margin: 2rem 0 1.5rem 0;
+        border-bottom: 3px solid #357b70; /* Brand Teal */
+        padding-bottom: 0.75rem;
+      }
+
       h3 {
-        font-size: 1.4rem; font-weight: 600; color: #4a5568; margin: 2rem 0 1rem 0; position: relative; padding-left: 1rem;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #4a5568;
+        margin: 2rem 0 1rem 0;
+        position: relative;
+        padding-left: 1rem;
       }
       h3::before {
-        content: ""; position: absolute; left: -1rem; top: 50%; transform: translateY(-50%);
-        width: 4px; height: 100%; 
+        content: "";
+        position: absolute;
+        left: -1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 100%;
         background: #357b70; /* Brand Teal */
         border-radius: 2px;
       }
-      
-      p { margin-bottom: 1.25rem; font-size: 1rem; color: #4a5568; text-align: justify; }
-      
+
+      p {
+        margin-bottom: 1.25rem;
+        font-size: 1rem;
+        color: #4a5568;
+        text-align: justify;
+      }
+
       .challenge-section {
-        margin-bottom: 2rem; padding: 1.5rem; border-radius: 12px; background: #f8f9fa; border: 1px solid #e9ecef;
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        border-radius: 12px;
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
         page-break-inside: avoid;
       }
-      
-      .visual-proof { margin: 1.5rem 0; padding: 1rem; background: white; border-radius: 8px; border: 2px solid #e2e8f0; }
+
+      .visual-proof {
+        margin: 1.5rem 0;
+        padding: 1rem;
+        background: white;
+        border-radius: 8px;
+        border: 2px solid #e2e8f0;
+      }
       .visual-proof h4 {
-        font-size: 1rem; color: #357b70; margin-bottom: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .5px;
+        font-size: 1rem;
+        color: #357b70;
+        margin-bottom: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
       }
-      
-      .side-by-side-container { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
-      .code-comparison { width: 100%; }
-      .code-comparison h4 { text-align: center; color: #357b70; font-size: 1rem; margin-bottom: .75rem; font-weight: 600; }
-      
+
+      .side-by-side-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin: 1.5rem 0;
+      }
+      .code-comparison {
+        width: 100%;
+      }
+      .code-comparison h4 {
+        text-align: center;
+        color: #357b70;
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+        font-weight: 600;
+      }
+
       .code-placeholder {
-        background: #1a202c; color: #e2e8f0; height: 280px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
-        font-family: "Monaco","Menlo","Ubuntu Mono",monospace; 
-        border: 2px solid #357b70; 
-        overflow: hidden; padding: .5rem; position: relative;
+        background: #1a202c;
+        color: #e2e8f0;
+        height: 280px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+        border: 2px solid #357b70;
+        overflow: hidden;
+        padding: 0.5rem;
+        position: relative;
       }
-      .code-placeholder img { width: 100%; height: 100%; object-fit: contain; border-radius: 4px; }
-      
+      .code-placeholder img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 4px;
+      }
+
       .image-placeholder {
-        width: 100%; min-height: 250px; background: white; border: 2px solid #e2e8f0; border-radius: 8px; display: flex; align-items: center; justify-content: center; padding: .5rem; overflow: hidden;
+        width: 100%;
+        min-height: 250px;
+        background: white;
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem;
+        overflow: hidden;
       }
-      .image-placeholder img { width: 100%; height: 100%; object-fit: contain; border-radius: 8px; }
-      
-      .ui-screenshots { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
-      
+      .image-placeholder img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 8px;
+      }
+
+      .ui-screenshots {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin: 1.5rem 0;
+      }
+
       .final-solution {
-        background: #f7fafc; padding: 2rem; border-radius: 12px; 
-        border: 1px solid #357b70; 
+        background: #f7fafc;
+        padding: 2rem;
+        border-radius: 12px;
+        border: 1px solid #357b70;
         margin: 2rem 0;
       }
-      
+
       .gif-placeholder {
-        width: 100%; height: 450px; background: white; 
-        border: 2px solid #357b70; 
-        border-radius: 12px; display: block; margin: 1rem 0; padding: 10px; overflow: hidden;
+        width: 100%;
+        height: 450px;
+        background: white;
+        border: 2px solid #357b70;
+        border-radius: 12px;
+        display: block;
+        margin: 1rem 0;
+        padding: 10px;
+        overflow: hidden;
       }
-      .gif-placeholder img { width: 100%; height: 100%; object-fit: contain; display: block; content: url('./APP_WORKING_ON_PHONE.gif'); }
-      
-      .learnings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; page-break-inside: avoid; }
-      
-      .learning-box { 
-        background: white; padding: 1.5rem; border-radius: 12px; 
-        border-left: 5px solid #357b70; 
-        box-shadow: 0 4px 6px rgba(0,0,0,.05); 
+      .gif-placeholder img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+        content: url("./APP_WORKING_ON_PHONE.gif");
       }
-      .learning-box h4 { font-size: 1.2rem; color: #2d3748; margin-bottom: 1rem; font-weight: 600; }
-      
-      .future-steps-list { margin: 1rem auto; padding-left: 0; list-style: none; max-width: 80%; text-align: center; }
-      .future-steps-list li { padding: .5rem 0; color: #4a5568; }
-      .future-steps-list li::before { content: "→ "; color: #357b70; font-weight: bold; }
-      
+
+      .learnings-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin: 1.5rem 0;
+        page-break-inside: avoid;
+      }
+
+      .learning-box {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        border-left: 5px solid #357b70;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      }
+      .learning-box h4 {
+        font-size: 1.2rem;
+        color: #2d3748;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      .future-steps-list {
+        margin: 1rem auto;
+        padding-left: 0;
+        list-style: none;
+        max-width: 80%;
+        text-align: center;
+      }
+      .future-steps-list li {
+        padding: 0.5rem 0;
+        color: #4a5568;
+      }
+      .future-steps-list li::before {
+        content: "→ ";
+        color: #357b70;
+        font-weight: bold;
+      }
+
       .cta-section {
-        text-align: center; margin-top: 3rem; padding: 2rem; background: #f7fafc; border-radius: 12px;
+        text-align: center;
+        margin-top: 3rem;
+        padding: 2rem;
+        background: #f7fafc;
+        border-radius: 12px;
       }
-      .cta-section h3 { margin-bottom: 1.5rem; text-align: center; padding-left: 0; }
-      .cta-section h4 { margin: 1.5rem 0 .5rem 0; color: #4a5568; font-size: 1.1rem; }
-      
-      .cta-buttons { display: flex; gap: 1.5rem; justify-content: center; margin-top: 1.5rem; }
-      
+      .cta-section h3 {
+        margin-bottom: 1.5rem;
+        text-align: center;
+        padding-left: 0;
+      }
+      .cta-section h4 {
+        margin: 1.5rem 0 0.5rem 0;
+        color: #4a5568;
+        font-size: 1.1rem;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        margin-top: 1.5rem;
+      }
+
       .cta-button {
-        padding: 1rem 2rem; border: none; border-radius: 8px; font-weight: 600; text-decoration: none; color: white; 
-        transition: all .3s ease; font-size: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,.1);
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        color: white;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         border-bottom: 2px solid rgba(0, 0, 0, 0.3);
       }
-      .cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,.15); opacity: 0.8; }
-      
+      .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        opacity: 0.8;
+      }
+
       /* Updated Buttons */
-      .github-button { background-color: #357b70; /* Teal */ }
-      .demo-button { background-color: #e0b354; color: #2b2b2b; /* Gold */ }
+      .github-button {
+        background-color: #357b70; /* Teal */
+      }
+      .demo-button {
+        background-color: #e0b354;
+        color: #2b2b2b; /* Gold */
+      }
 
       @media print {
-        .nav-header { display: none; } /* Hide nav on print */
-        body { background: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-        .page { width: 100%; min-height: 0; margin: 0; padding: 0.5in 0.6in; page-break-after: always; box-shadow: none; }
-        .page:last-child { page-break-after: avoid; }
-        .gif-placeholder img { content: url('./APP_WORKING_ON_PHONE.png') !important; }
-        .side-by-side-container { display: block !important; }
-        .code-comparison {
-          page-break-inside: avoid; break-inside: avoid-page;
-          -webkit-column-break-inside: avoid; -webkit-region-break-inside: avoid;
-          page-break-before: always; page-break-after: always;
-          margin: 0; padding: 0.15in 0 0;
+        .nav-header {
+          display: none;
+        } /* Hide nav on print */
+        body {
+          background: white;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
         }
-        .code-comparison:first-child { page-break-before: auto; }
+        .page {
+          width: 100%;
+          min-height: 0;
+          margin: 0;
+          padding: 0.5in 0.6in;
+          page-break-after: always;
+          box-shadow: none;
+        }
+        .page:last-child {
+          page-break-after: avoid;
+        }
+        .gif-placeholder img {
+          content: url("./APP_WORKING_ON_PHONE.png") !important;
+        }
+        .side-by-side-container {
+          display: block !important;
+        }
+        .code-comparison {
+          page-break-inside: avoid;
+          break-inside: avoid-page;
+          -webkit-column-break-inside: avoid;
+          -webkit-region-break-inside: avoid;
+          page-break-before: always;
+          page-break-after: always;
+          margin: 0;
+          padding: 0.15in 0 0;
+        }
+        .code-comparison:first-child {
+          page-break-before: auto;
+        }
         .code-comparison h4 {
-          page-break-inside: avoid; break-inside: avoid-page;
-          margin: 0 0 0.15in 0; text-align: center; font-size: 1.2rem;
+          page-break-inside: avoid;
+          break-inside: avoid-page;
+          margin: 0 0 0.15in 0;
+          text-align: center;
+          font-size: 1.2rem;
         }
         .code-placeholder {
-          width: 100% !important; height: 8in !important; max-height: 8.5in !important;
-          border: none !important; padding: 0 !important; margin: 0 !important;
-          display: flex !important; align-items: center !important; justify-content: center !important;
-          page-break-inside: avoid; break-inside: avoid-page;
+          width: 100% !important;
+          height: 8in !important;
+          max-height: 8.5in !important;
+          border: none !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          page-break-inside: avoid;
+          break-inside: avoid-page;
         }
         .code-placeholder img {
-          width: 100% !important; height: 100% !important; object-fit: contain !important;
-          transform: none !important; position: static !important; max-width: 100% !important; max-height: 100% !important;
+          width: 100% !important;
+          height: 100% !important;
+          object-fit: contain !important;
+          transform: none !important;
+          position: static !important;
+          max-width: 100% !important;
+          max-height: 100% !important;
         }
-        .challenge-section, .visual-proof, .ui-screenshots, .image-placeholder,
-        .final-solution, .learnings-grid, .learning-box {
-          page-break-inside: avoid; break-inside: avoid-page;
+        .challenge-section,
+        .visual-proof,
+        .ui-screenshots,
+        .image-placeholder,
+        .final-solution,
+        .learnings-grid,
+        .learning-box {
+          page-break-inside: avoid;
+          break-inside: avoid-page;
         }
       }
     </style>
   </head>
   <body>
     <div class="nav-header">
-        <a href="../../index.html" class="nav-btn">Back to Viewer</a>
+      <a href="../../index.html" class="nav-btn">Back to Viewer</a>
     </div>
 
     <div class="page">
       <div class="hero-container">
         <div class="hero-image">
-          <img src="img\MOVIEMOBS\SCREENSHOT 1 MOVIEMOBS.png" alt="Screenshot welcome page to MovieMobs" />
+          <img
+            src="img\MOVIEMOBS\SCREENSHOT 1 MOVIEMOBS.png"
+            alt="Screenshot welcome page to MovieMobs"
+          />
         </div>
         <h1 class="main-title">MovieMobs</h1>
-        <p class="subtitle">A Case Study in Modernizing an Angular Application</p>
+        <p class="subtitle">
+          A Case Study in Modernizing an Angular Application
+        </p>
         <div class="project-pitch">
           <strong>Project Pitch:</strong><br /><br />
           Along my training at CareerFoundry.com I was assigned several tasks
           that aimed at the final building of an app related to movies...
         </div>
       </div>
-      
+
       <div class="project-details-grid">
         <div class="detail-card">
           <h3>My Role</h3>
@@ -237,7 +515,10 @@
 
     <div class="page">
       <h2>The Process & Challenges</h2>
-      <p>The primary challenge was that the course materials were based on a previous version of Angular...</p>
+      <p>
+        The primary challenge was that the course materials were based on a
+        previous version of Angular...
+      </p>
 
       <div class="challenge-section">
         <h3>Challenge 1: Architecture</h3>
@@ -248,13 +529,19 @@
             <div class="code-comparison">
               <h4>Before (Legacy NgModule)</h4>
               <div class="code-placeholder">
-                <img src="img\MOVIEMOBS\SCREENSHOT DEPRECATED MOVIEMOBS.png" alt="Deprecated NgModule architecture example" />
+                <img
+                  src="img\MOVIEMOBS\SCREENSHOT DEPRECATED MOVIEMOBS.png"
+                  alt="Deprecated NgModule architecture example"
+                />
               </div>
             </div>
             <div class="code-comparison">
               <h4>After (My Solution)</h4>
               <div class="code-placeholder">
-                <img src="img\MOVIEMOBS\SCREENSHOT NON-DEPRECATED JOBSEARCH.png" alt="Modern standalone component architecture" />
+                <img
+                  src="img\MOVIEMOBS\SCREENSHOT NON-DEPRECATED JOBSEARCH.png"
+                  alt="Modern standalone component architecture"
+                />
               </div>
             </div>
           </div>
@@ -268,10 +555,13 @@
           <h4>Visual Proof:</h4>
           <div class="ui-screenshots">
             <div class="image-placeholder">
-              <img src="./SIGNUP FORM WORKING.png" alt="User Registration Form" />
+              <img
+                src="img\MOVIEMOBS\SIGNUP FORM WORKING.png"
+                alt="User Registration Form"
+              />
             </div>
             <div class="image-placeholder">
-              <img src="./LOGIN FORM WORKING.png" alt="User Login Form" />
+              <img src="img\MOVIEMOBS\LOGIN FORM WORKING.png" alt="User Login Form" />
             </div>
           </div>
         </div>
@@ -281,20 +571,31 @@
     <div class="page">
       <div class="challenge-section">
         <h3>Challenge 3: API Integration</h3>
-        <p>Runtime errors arose from changes in how animation providers were loaded...</p>
+        <p>
+          Runtime errors arose from changes in how animation providers were
+          loaded...
+        </p>
         <div class="visual-proof">
           <h4>Visual Proof:</h4>
           <div class="code-placeholder" style="height: 180px">
-            <img src="img\MOVIEMOBS\LOGIN FORM WORKING.png" alt="API Integration demonstration" />
+            <img
+              src="img\MOVIEMOBS\LOGIN FORM WORKING.png"
+              alt="API Integration demonstration"
+            />
           </div>
         </div>
       </div>
 
       <div class="final-solution">
         <h2>The Final Solution</h2>
-        <p>The result is a fully functional and modern Angular application...</p>
+        <p>
+          The result is a fully functional and modern Angular application...
+        </p>
         <div class="gif-placeholder">
-          <img src="img\MOVIEMOBS\APP_WORKING_ON_PHONE.png" alt="MovieMobs user flow demonstration" />
+          <img
+            src="img\MOVIEMOBS\APP_WORKING_ON_PHONE.png"
+            alt="MovieMobs user flow demonstration"
+          />
         </div>
       </div>
 
@@ -302,7 +603,10 @@
       <div class="learnings-grid">
         <div class="learning-box">
           <h4>Key Learnings</h4>
-          <p>This project was a critical lesson in the rapid evolution of web development...</p>
+          <p>
+            This project was a critical lesson in the rapid evolution of web
+            development...
+          </p>
         </div>
         <div class="learning-box">
           <h4>Future Steps</h4>
@@ -319,13 +623,29 @@
         <h3>View the Project</h3>
         <h4>Frontend</h4>
         <div class="cta-buttons">
-          <a href="https://github.com/ivencomur/MOVIEMOBS-FINAL-VERSION" class="cta-button github-button">View on GitHub</a>
-          <a href="https://iecm-moviemobs-frontend-client-final.onrender.com/" class="cta-button demo-button">Live Demo</a>
+          <a
+            href="https://github.com/ivencomur/MOVIEMOBS-FINAL-VERSION"
+            class="cta-button github-button"
+            >View on GitHub</a
+          >
+          <a
+            href="https://iecm-moviemobs-frontend-client-final.onrender.com/"
+            class="cta-button demo-button"
+            >Live Demo</a
+          >
         </div>
         <h4>Backend</h4>
         <div class="cta-buttons">
-          <a href="https://github.com/ivencomur/iecm_movies_api" class="cta-button github-button">View on GitHub</a>
-          <a href="https://iecm-moviemobs-api.onrender.com/" class="cta-button demo-button">Live Demo</a>
+          <a
+            href="https://github.com/ivencomur/iecm_movies_api"
+            class="cta-button github-button"
+            >View on GitHub</a
+          >
+          <a
+            href="https://iecm-moviemobs-api.onrender.com/"
+            class="cta-button demo-button"
+            >Live Demo</a
+          >
         </div>
       </div>
     </div>
