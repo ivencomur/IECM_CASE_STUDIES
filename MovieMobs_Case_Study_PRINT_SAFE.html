@@ -25,24 +25,52 @@
         color: #333;
         background: #d9e1e5;
       }
+
+      /* --- PAGE LAYOUT & RESPONSIVENESS --- */
       .page {
-        width: 8.5in;
+        width: 100%;
+        max-width: 8.5in; /* Limits width on desktop */
         min-height: 11in;
         margin: 20px auto 0.5in auto;
         padding: 0.5in 0.75in;
         background: white;
         page-break-after: always;
         position: relative;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Added shadow for better view */
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
       }
       .page:last-child {
         page-break-after: avoid;
+      }
+
+      /* Mobile optimization */
+      @media screen and (max-width: 768px) {
+        .page {
+          margin: 0;
+          padding: 1.5rem;
+          width: 100%;
+          min-height: 100vh;
+          box-shadow: none;
+        }
+        .main-title {
+          font-size: 2rem !important;
+        }
+        .side-by-side-container,
+        .ui-screenshots,
+        .learnings-grid,
+        .project-details-grid {
+          grid-template-columns: 1fr !important; /* Stack columns on mobile */
+        }
+        .gif-placeholder {
+            height: auto !important;
+            min-height: 300px;
+        }
       }
 
       /* --- HEADER NAVIGATION --- */
       .nav-header {
         text-align: center;
         padding-bottom: 20px;
+        padding-top: 20px;
       }
       .nav-btn {
         display: inline-block;
@@ -58,8 +86,8 @@
       .nav-btn:hover {
         opacity: 0.8;
       }
-      /* ------------------------- */
 
+      /* --- CONTENT STYLES --- */
       .hero-container {
         text-align: center;
         margin-bottom: 2rem;
@@ -293,7 +321,8 @@
         height: 100%;
         object-fit: contain;
         display: block;
-        content: url("./APP_WORKING_ON_PHONE.gif");
+        /* NOTE: Ensure this GIF path is correct relative to your HTML file */
+        content: url("img/MOVIEMOBS/APP_WORKING_ON_PHONE.gif");
       }
 
       .learnings-grid {
@@ -358,6 +387,7 @@
         gap: 1.5rem;
         justify-content: center;
         margin-top: 1.5rem;
+        flex-wrap: wrap; /* Added for mobile wrapping */
       }
 
       .cta-button {
@@ -378,7 +408,6 @@
         opacity: 0.8;
       }
 
-      /* Updated Buttons */
       .github-button {
         background-color: #357b70; /* Teal */
       }
@@ -387,10 +416,11 @@
         color: #2b2b2b; /* Gold */
       }
 
+      /* --- PRINT STYLES --- */
       @media print {
         .nav-header {
           display: none;
-        } /* Hide nav on print */
+        }
         body {
           background: white;
           -webkit-print-color-adjust: exact;
@@ -398,6 +428,7 @@
         }
         .page {
           width: 100%;
+          max-width: none;
           min-height: 0;
           margin: 0;
           padding: 0.5in 0.6in;
@@ -408,7 +439,8 @@
           page-break-after: avoid;
         }
         .gif-placeholder img {
-          content: url("./APP_WORKING_ON_PHONE.png") !important;
+          /* Fallback for print (PDFs don't play GIFs) */
+          content: url("img/MOVIEMOBS/APP_WORKING_ON_PHONE.png") !important;
         }
         .side-by-side-container {
           display: block !important;
@@ -416,8 +448,6 @@
         .code-comparison {
           page-break-inside: avoid;
           break-inside: avoid-page;
-          -webkit-column-break-inside: avoid;
-          -webkit-region-break-inside: avoid;
           page-break-before: always;
           page-break-after: always;
           margin: 0;
@@ -477,7 +507,7 @@
       <div class="hero-container">
         <div class="hero-image">
           <img
-            src="img\MOVIEMOBS\SCREENSHOT 1 MOVIEMOBS.png"
+            src="img/MOVIEMOBS/SCREENSHOT 1 MOVIEMOBS.png"
             alt="Screenshot welcome page to MovieMobs"
           />
         </div>
@@ -530,7 +560,7 @@
               <h4>Before (Legacy NgModule)</h4>
               <div class="code-placeholder">
                 <img
-                  src="img\MOVIEMOBS\SCREENSHOT DEPRECATED MOVIEMOBS.png"
+                  src="img/MOVIEMOBS/SCREENSHOT DEPRECATED MOVIEMOBS.png"
                   alt="Deprecated NgModule architecture example"
                 />
               </div>
@@ -539,7 +569,7 @@
               <h4>After (My Solution)</h4>
               <div class="code-placeholder">
                 <img
-                  src="img\MOVIEMOBS\SCREENSHOT NON-DEPRECATED JOBSEARCH.png"
+                  src="img/MOVIEMOBS/SCREENSHOT NON-DEPRECATED JOBSEARCH.png"
                   alt="Modern standalone component architecture"
                 />
               </div>
@@ -556,12 +586,12 @@
           <div class="ui-screenshots">
             <div class="image-placeholder">
               <img
-                src="img\MOVIEMOBS\SIGNUP FORM WORKING.png"
+                src="img/MOVIEMOBS/SIGNUP FORM WORKING.png"
                 alt="User Registration Form"
               />
             </div>
             <div class="image-placeholder">
-              <img src="img\MOVIEMOBS\LOGIN FORM WORKING.png" alt="User Login Form" />
+              <img src="img/MOVIEMOBS/LOGIN FORM WORKING.png" alt="User Login Form" />
             </div>
           </div>
         </div>
@@ -579,7 +609,7 @@
           <h4>Visual Proof:</h4>
           <div class="code-placeholder" style="height: 180px">
             <img
-              src="img\MOVIEMOBS\LOGIN FORM WORKING.png"
+              src="img/MOVIEMOBS/LOGIN FORM WORKING.png"
               alt="API Integration demonstration"
             />
           </div>
@@ -593,7 +623,7 @@
         </p>
         <div class="gif-placeholder">
           <img
-            src="img\MOVIEMOBS\APP_WORKING_ON_PHONE.png"
+            src="img/MOVIEMOBS/APP_WORKING_ON_PHONE.png"
             alt="MovieMobs user flow demonstration"
           />
         </div>
@@ -626,11 +656,15 @@
           <a
             href="https://github.com/ivencomur/MOVIEMOBS-FINAL-VERSION"
             class="cta-button github-button"
+            target="_blank"
+            rel="noopener noreferrer"
             >View on GitHub</a
           >
           <a
             href="https://iecm-moviemobs-frontend-client-final.onrender.com/"
             class="cta-button demo-button"
+            target="_blank"
+            rel="noopener noreferrer"
             >Live Demo</a
           >
         </div>
@@ -639,11 +673,15 @@
           <a
             href="https://github.com/ivencomur/iecm_movies_api"
             class="cta-button github-button"
+            target="_blank"
+            rel="noopener noreferrer"
             >View on GitHub</a
           >
           <a
             href="https://iecm-moviemobs-api.onrender.com/"
             class="cta-button demo-button"
+            target="_blank"
+            rel="noopener noreferrer"
             >Live Demo</a
           >
         </div>
