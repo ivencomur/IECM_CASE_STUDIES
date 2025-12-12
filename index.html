@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ivan Cortes - Case Study Viewer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Moderustic:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* 2. Global Styles & Typography */
+      body {
+        font-family: "Moderustic", sans-serif; /* Updated Font */
+        font-weight: 400;
+        line-height: 1.6;
+        color: #333;
+        background: #d9e1e5;
+        padding: 40px 20px;
+      }
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #2d3748;
+        margin-bottom: 1rem;
+        border-bottom: 3px solid #357b70; /* Brand Color: Teal */
+        padding-bottom: 0.75rem;
+      }
+      p {
+        font-size: 1.1rem;
+        color: #4a5568;
+        margin-bottom: 2rem;
+      }
+
+      /* List Styles */
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      li {
+        margin-bottom: 15px;
+      }
+
+      /* 3. Project Link Buttons (Using Brand Primary Color) */
+      .project-link {
+        display: block;
+        padding: 20px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 1.2rem;
+        text-decoration: none;
+        color: white;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        /* Replaced Gradient with your Brand Teal */
+        background-color: #357b70;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.3); /* Matches your CSS button style */
+      }
+
+      .project-link:hover {
+        transform: translateY(-3px); /* Kept the nice lift effect */
+        opacity: 0.8; /* Matches your CSS hover logic */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+      }
+
+      /* 4. New Navigation Section */
+      .navigation {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 2px solid #edf2f7;
+        display: flex;
+        justify-content: center;
+      }
+
+      /* Secondary/Back Button (Using Brand Gold) */
+      .nav-btn {
+        display: inline-block;
+        padding: 12px 30px;
+
+        /* Brand Secondary Color: Gold */
+        background-color: #e0b354;
+        color: #2b2b2b; /* Dark text for contrast on gold */
+
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 700;
+        transition: opacity 0.3s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+      }
+
+      .nav-btn:hover {
+        opacity: 0.8;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Case Study Viewer</h1>
+      <p>
+        This <code>index.html</code> file is in your main
+        <code>CASE_STUDIES</code> folder. The links below point to the correct
+        subfolders.
+      </p>
+
+      <ul>
+        <li>
+          <a
+            class="project-link"
+            href="./IECM_CASE_STUDIES/MOVIEMOBS_CASE_STUDY/MovieMobs_Case_Study_PRINT_SAFE.html"
+            >1. MovieMobs (Angular)</a
+          >
+        </li>
+        <li>
+          <a
+            class="project-link"
+            href="./IECM_CASE_STUDIES/MEET_APP_SERVERLESS_CASE_STUDY/MEET_APP_CASE_STUDY.html"
+            >2. Meet App (PWA)</a
+          >
+        </li>
+        <li>
+          <a
+            class="project-link"
+            href="./IECM_CASE_STUDIES/RECIPE_APP_PYTONDJANGO_CASE_STUDY/RECIPE_APP_CASE_STUDY.html"
+            >3. Recipe App (Python/Django)</a
+          >
+        </li>
+        <li>
+          <a
+            class="project-link"
+            href="./IECM_CASE_STUDIES/CHAT_APP_REACT_NATIVE_CASE_STUDY/CHAT_APP_CASE_STUDY.html"
+            >4. Chat App (React Native)</a
+          >
+        </li>
+      </ul>
+
+      <div class="navigation">
+        <a href="../index.html" class="nav-btn">Back to Main Portfolio</a>
+      </div>
+    </div>
+  </body>
+</html>
