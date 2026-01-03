@@ -1,2 +1,0 @@
-# IECM_CASE_STUDIES
-
