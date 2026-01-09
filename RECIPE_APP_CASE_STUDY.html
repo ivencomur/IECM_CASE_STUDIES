@@ -11,6 +11,30 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div id="google_translate_element" style="position: absolute; top: 10px; right: 10px; z-index: 9999;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: true
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <style>
+        /* Widget Styling */
+        .goog-te-gadget-simple {
+            background-color: rgba(255,255,255,0.9) !important;
+            border: 1px solid #e0e0e0 !important;
+            padding: 5px !important;
+            border-radius: 4px !important;
+            font-family: sans-serif !important;
+        }
+        .goog-te-gadget-simple a { text-decoration: none !important; color: #333 !important; }
+        .goog-te-banner-frame { display: none !important; }
+        body { top: 0px !important; }
+    </style>
     <div class="nav-header">
         <a href="index.html" class="nav-btn">Back to Viewer</a>
     </div>
